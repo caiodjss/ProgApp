@@ -2,34 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Cadastro;
+package ProjetoCadastro;
 
-import Cadastro.ModeloEmail;
+import Modelos.ModeloCadastro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author 013.397490
+ * @author Luã Estudo
  */
 public class Cadastro extends javax.swing.JFrame {
     
-    ModeloEmail me=new ModeloEmail();
+    ModeloCadastro me = new ModeloCadastro();
 
     /**
-     * Creates new form Model
+     * Creates new form Cadastro
      */
+    
     public Cadastro() {
         initComponents();
-    }
-    
-    public void CapturaDados(){
-        me.setNome(jNome.getText());
-        me.setEmail(jEmail.getText());
     }
 
     /**
@@ -41,49 +39,49 @@ public class Cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jCod = new javax.swing.JTextField();
-        jNome = new javax.swing.JTextField();
-        jEmail = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-
-        jLabel2.setText("jLabel2");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jScrollPane2.setViewportView(jTextPane1);
+        Jnome = new javax.swing.JTextField();
+        Jcodigo = new javax.swing.JTextField();
+        Jemail = new javax.swing.JTextField();
+        Bcadastrar = new javax.swing.JButton();
+        Bsair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 153, 102));
 
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel1.setText("CÓDIGO");
 
-        jLabel3.setText("NOME");
+        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel2.setText("NOME");
 
-        jLabel4.setText("EMAIL");
+        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel3.setText("EMAIL");
 
-        jButton1.setText("CADASTRAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Jnome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JnomeActionPerformed(evt);
             }
         });
 
-        jButton2.setText("SAIR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Jemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JemailActionPerformed(evt);
+            }
+        });
+
+        Bcadastrar.setText("Cadastrar");
+        Bcadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BcadastrarActionPerformed(evt);
+            }
+        });
+
+        Bsair.setText("Sair");
+        Bsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BsairActionPerformed(evt);
             }
         });
 
@@ -93,74 +91,113 @@ public class Cadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Bcadastrar)
                         .addGap(18, 18, 18)
+                        .addComponent(Bsair, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Jcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jNome)
-                                    .addComponent(jEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                    .addComponent(jCod))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(Jnome)
+                                    .addComponent(Jemail, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(Jcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Jnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Jemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18))
+                    .addComponent(Bcadastrar)
+                    .addComponent(Bsair))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CapturaDados();
+    public void CapturaDados (){
         
-        //jdbc:mysql://localhost:3306/mysql
-        
-        if (jNome != null && jEmail != null){
-            Connection conn = null;
-            PreparedStatement pstmt = null;
-            
-            try {
-                 Class.forName("com.mysql.cj.jdbc.Driver");
-                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "cimatec");
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        me.setEmail(Jemail.getText());
+        me.setNome(Jnome.getText()); 
+  
+    }
+    
+    private void BsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsairActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BsairActionPerformed
+
+    @SuppressWarnings("empty-statement")
+    private void BcadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcadastrarActionPerformed
+     
+       CapturaDados ();  
+       
+       //jdbc:mysql://localhost:3306/emails
+       
+       if( Jnome != null && Jemail != null){
+           
+           Connection conn = null;
+           PreparedStatement  pstmt = null;
+           
+           try {
+               Class.forName("com.mysql.cj.jdbc.Driver");
+               conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/emails","root","cimatec");
+               String sql = "INSERT INTO contato (Nome,Email) VALUES (?, ?)";
+               
+               pstmt = conn.prepareStatement(sql);
+               
+               pstmt.setString(1,me.getNome());
+               pstmt.setString(2,me.getEmail());
+               
+               int result = pstmt.executeUpdate();
+               
+               if (result > 0){ 
+                   JOptionPane.showMessageDialog (null, "Registro inserido com sucesso");
+               }
+               else {
+                   JOptionPane.showMessageDialog(null,"Erro ao inserir o registro");
+               }
+             
+               
+           }
+           catch(ClassNotFoundException | NumberFormatException | SQLException e){
+               JOptionPane.showMessageDialog(null,"ERRO!" +e);
+           }      
+           finally {
+               if (pstmt != null) try {pstmt.close();} catch (SQLException ignore){};
+               if (conn != null) try {conn.close();} catch (SQLException ignore){};
+           }
+    }//GEN-LAST:event_BcadastrarActionPerformed
+    }
+    private void JemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JemailActionPerformed
+        // TODO add aa handling code here:
+    }//GEN-LAST:event_JemailActionPerformed
+
+    private void JnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JnomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,40 +215,27 @@ public class Cadastro extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cadastro().setVisible(true);
-            }
+
+        java.awt.EventQueue.invokeLater(() -> {
+            new Cadastro().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JTextField jCod;
-    private javax.swing.JTextField jEmail;
+    private javax.swing.JButton Bcadastrar;
+    private javax.swing.JButton Bsair;
+    private javax.swing.JTextField Jcodigo;
+    private javax.swing.JTextField Jemail;
+    private javax.swing.JTextField Jnome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jNome;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
